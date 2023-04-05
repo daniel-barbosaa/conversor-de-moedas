@@ -9,11 +9,17 @@ const currencyText = document.getElementById("currency-text")
 
 // FUNÇÕES 
 
-const dolar = 5.19
-const euro = 5.48
-const bitcoin = 115.475
+// const dolar = 5.19
+// const euro = 5.48
+// const bitcoin = 115.475
 
-const converterCoin = () => {
+const converterCoin = async () => {
+
+    const date = await fetch(' https://economia.awesomeapi.com.br/last/USD-BRL,EUR-BRL,BTC-BRL').then((res) => res.json())
+
+    const dolar = date.USDBRL.high
+    const euro = date.EURBRL.high
+    const bitcoin = date.BTCBRL.high
 
     let valueDolar = (value.value / dolar)
     let valueEuro = (value.value / euro)
